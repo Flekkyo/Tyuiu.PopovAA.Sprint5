@@ -7,7 +7,7 @@ namespace Tyuiu.PopovAA.Sprint5.Task2.V7.Test
         [TestMethod]
         public void TestMethod1()
         {
-            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask1.txt");
+            string path = Path.Combine(Path.GetTempPath(), "OutPutFileTask2.csv");
 
             FileInfo fileInfo = new FileInfo(path);
             bool fileExists = fileInfo.Exists;
