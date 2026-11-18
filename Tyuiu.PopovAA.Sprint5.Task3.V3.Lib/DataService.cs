@@ -1,5 +1,6 @@
 ﻿using tyuiu.cources.programming.interfaces.Sprint5;
 using System.IO;
+using System.Text;
 namespace Tyuiu.PopovAA.Sprint5.Task3.V3.Lib
 {
     public class DataService : ISprint5Task3V3
@@ -15,8 +16,13 @@ namespace Tyuiu.PopovAA.Sprint5.Task3.V3.Lib
                 File.Delete(path);
             }
 
-            string res = Convert.ToString(Math.Round(x * Math.Pow(x + 3, 0.5), 3));
-            return res;
+            double res = Math.Round(x * Math.Pow(x + 3, 0.5), 3);
+
+            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.OpenOrCreate), Encoding.UTF8))
+            {
+                writer.Write(BitConverter.GetBytes(res));
+            }
+            return path;
         }
     }
 }
