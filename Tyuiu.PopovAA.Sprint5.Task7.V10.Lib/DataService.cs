@@ -6,13 +6,24 @@ namespace Tyuiu.PopovAA.Sprint5.Task7.V10.Lib
     {
         public string LoadDataAndSave(string path)
         {
+            string data2 = "";
             string pathout = Path.Combine(Path.GetTempPath(), "OutPutDataFileTask7V10.txt");
 
             string data = File.ReadAllText(path);
 
-            data = data.ToLowerInvariant();
+            foreach (char s in data)
+            {
+                if (s >= 'A' && s <= 'Z')
+                {
+                    data2 += char.ToLower(s);
+                }
+                else
+                {
+                    data2 += s;
+                }
+            }
 
-            File.WriteAllText(pathout, data);
+            File.WriteAllText(pathout, data2);
 
             return pathout;
         }
